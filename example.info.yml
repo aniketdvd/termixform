@@ -1,0 +1,5 @@
+name: termixform
+description: terminal like basic form
+core: 8.x
+type: module
+package: custom

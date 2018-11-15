@@ -22,18 +22,22 @@ class ExampleForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['inp_name'] = [
+      '#required' => TRUE,
       '#type' => 'textfield',
       '#title' => $this->t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your full name: </div>'),
     ];
     $form['inp_age'] = [
+      '#required' => TRUE,
       '#type' => 'number',
       '#title' => $this->t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your age: </div>'),
     ];
     $form['inp_dob'] = [
+      '#required' => TRUE,
       '#type' => 'date',
       '#title' => $this->t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your birthdate: </div>'),
     ];
     $form['inp_gender'] = [
+      '#required' => TRUE,
       '#type' => 'select',
       '#title' => $this->t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your gender: </div>'),
       '#options' => [

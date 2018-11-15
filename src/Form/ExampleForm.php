@@ -8,11 +8,13 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * Implements an example form.
  */
+
 class ExampleForm extends FormBase {
 
   /**
    * {@inheritdoc}
    */
+
   public function getFormId() {
     return 'example_form';
   }
@@ -20,6 +22,7 @@ class ExampleForm extends FormBase {
   /**
    * {@inheritdoc}
    */
+
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form['inp_name'] = [
       '#required' => TRUE,
@@ -60,14 +63,14 @@ class ExampleForm extends FormBase {
   **/
 
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    if($form_state->getValue('inp_name')==''){
-      $form_state->setErrorByName('inp_name', $this->t('Sorry, but we need your name.'));
+    if($form_state -> getValue('inp_name')==''){
+      $form_state -> setErrorByName('inp_name', $this->t('Sorry, but we need your name.'));
     }
-    if($form_state->getValue('inp_age')<=0 || $form_state->getValue('inp_age')<=''){
-      $form_state->setErrorByName('inp_age', $this->t('Do you even exist ?'));
+    if($form_state -> getValue('inp_age')<=0 || $form_state->getValue('inp_age')<=''){
+      $form_state -> setErrorByName('inp_age', $this->t('Do you even exist? Tell your actual age.'));
     }
-    if($form_state->getValue('inp_age')>=110){
-      $form_state->setErrorByName('inp_age', $this->t('you sure you a hooman?'));
+    if($form_state -> getValue('inp_age')>=110){
+      $form_state -> setErrorByName('inp_age', $this->t('you sure you a hooman? Your age is too much'));
     }
   }
 
@@ -75,15 +78,15 @@ class ExampleForm extends FormBase {
    * {@inheritdoc}
   **/
 
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state){
     $messenger = \Drupal::messenger();
     $name = $form_state->getValue('inp_name');
     $age = $form_state->getValue('inp_age');
     $gender = $form_state->getValue('inp_gender');
     $dob = $form_state->getValue('inp_dob');
-    $messenger->addMessage($this->t('Your name is @name', ['@name'=>$name]));
-    $messenger->addMessage($this->t('You are @age years old', ['@age'=>$age]));
-    $messenger->addMessage($this->t('You were born on @date', ['@date'=>$dob]));
-    $messenger->addMessage($this->t('You are @gender', ['@gender'=>$gender]));
-    }
+    $messenger -> addMessage($this->t('Your name is @name', ['@name'=>$name]));
+    $messenger -> addMessage($this->t('You are @age years old', ['@age'=>$age]));
+    $messenger -> addMessage($this->t('You were born on @date', ['@date'=>$dob]));
+    $messenger -> addMessage($this->t('You are @gender', ['@gender'=>$gender]));
+  }
 }

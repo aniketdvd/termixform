@@ -27,19 +27,19 @@ class ExampleForm extends FormBase {
     ];
     $form['inp_age'] = [
       '#type' => 'number',
-      '#title' => t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your age: </div>'),
+      '#title' => $this->t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your age: </div>'),
     ];
     $form['inp_dob'] = [
       '#type' => 'date',
-      '#title' => t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your birthdate: </div>'),
+      '#title' => $this->t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your birthdate: </div>'),
     ];
     $form['inp_gender'] = [
       '#type' => 'select',
-      '#title' => t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your gender: </div>'),
+      '#title' => $this->t('<div style="font-size: 15px; padding: 5px; color: yellow; background: black;">root&#64;form:~# Your gender: </div>'),
       '#options' => [
-        'male' => t('Male'),
-        'female' => t('Female'),
-        'other' => t('Other'),
+        'male' => $this->t('Male'),
+        'female' => $this->t('Female'),
+        'other' => $this->t('Other'),
       ],
     ];
     $form['actions']['#type'] = 'actions';

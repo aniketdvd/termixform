@@ -63,8 +63,8 @@ class ExampleForm extends FormBase {
   **/
 
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    if($form_state -> getValue('inp_name')==''){
-      $form_state -> setErrorByName('inp_name', $this->t('Sorry, but we need your name.'));
+    if(strlen($form_state -> getValue('inp_name'))===1){
+      $form_state -> setErrorByName('inp_name', $this->t('Sorry, but your name is too short.'));
     }
     if($form_state -> getValue('inp_age')<=0 || $form_state->getValue('inp_age')<=''){
       $form_state -> setErrorByName('inp_age', $this->t('Do you even exist? Tell your actual age.'));

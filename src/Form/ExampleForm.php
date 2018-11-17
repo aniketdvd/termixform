@@ -72,6 +72,9 @@ class ExampleForm extends FormBase {
     if($form_state -> getValue('inp_age')>=110){
       $form_state -> setErrorByName('inp_age', $this->t('you sure you a hooman? Your age is too much'));
     }
+    if (ctype_alpha($form_state -> getValue('inp_name')) === false){
+      $form_state -> setErrorByName('inp_name', $this->t('Your name must contain letters only, please.'));
+    }
   }
 
   /**

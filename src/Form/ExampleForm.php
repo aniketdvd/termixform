@@ -75,6 +75,10 @@ class ExampleForm extends FormBase {
     if (ctype_alpha($form_state -> getValue('inp_name')) === false){
       $form_state -> setErrorByName('inp_name', $this->t('Your name must contain letters only, please.'));
     }
+    $yThen = explode("-", $form_state -> getValue('inp_dob'));
+    if(date('Y') - $yThen[0] != $form_state -> getValue('inp_age')){
+      $form_state -> setErrorByName('inp_age', $this->t('Your age is not matching your birthdate.'));
+    }
   }
 
   /**

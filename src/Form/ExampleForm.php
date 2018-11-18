@@ -62,7 +62,7 @@ class ExampleForm extends FormBase {
    * {@inheritdoc}
   **/
 
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state){
     if(strlen($form_state -> getValue('inp_name'))===1){
       $form_state -> setErrorByName('inp_name', $this->t('Sorry, but your name is too short.'));
     }
@@ -72,12 +72,12 @@ class ExampleForm extends FormBase {
     if($form_state -> getValue('inp_age')>=110){
       $form_state -> setErrorByName('inp_age', $this->t('you sure you a hooman? Your age is too much'));
     }
-    if (ctype_alpha($form_state -> getValue('inp_name')) === false){
-      $form_state -> setErrorByName('inp_name', $this->t('Your name must contain letters only, please.'));
-    }
+    if(!preg_match('/^[a-z ]+$/i', $form_state -> getValue('inp_name'))){
+      $form_state -> setErrorByName('inp_name', $this->t('Name can contain only valid characters.'));
+    } 
     $yThen = explode("-", $form_state -> getValue('inp_dob'));
     if(date('Y') - $yThen[0] != $form_state -> getValue('inp_age')){
-      $form_state -> setErrorByName('inp_age', $this->t('Your age is not matching your birthdate.'));
+      $form_state -> setErrorByName('inp_age', $this->t('Your age is not matching your birthdate'));
     }
   }
 

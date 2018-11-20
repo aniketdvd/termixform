@@ -75,12 +75,16 @@ class ExampleForm extends FormBase {
     if(!preg_match('/^[a-z ]+$/i', $form_state -> getValue('inp_name'))){
       $form_state -> setErrorByName('inp_name', $this->t('Name can contain only valid characters.'));
     } 
-    $Then = $form_state -> getValue('inp_dob');
-    if(date('Y') - $Then != $form_state -> getValue('inp_age')){
-      $form_state -> setErrorByName('inp_age', $this->t('Your age is not matching your birthdate'));
+
+    $dateNow = date('Y-m-d');
+    $dateUser = $form_state -> getValue('inp_dob');
+    $rawAgeDate = ($dateNow - $dateUser);
+    $diff = (strtotime($dateNow) - strtotime($dateUser));
+    $__tocomp = (int)($diff/(365*60*60*24));
+    if($__tocomp != $form_state->getValue('inp_age')){
+      $form_state -> setErrorByName('inp_age', $this->t('Please check your birthdate and age again'));
     }
   }
-
   /**
    * {@inheritdoc}
   **/
